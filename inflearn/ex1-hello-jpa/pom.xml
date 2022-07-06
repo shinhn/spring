@@ -19,5 +19,11 @@
             <artifactId>h2</artifactId>
             <version>1.4.200</version> <!-- h2 데이터베이스를 사용할 경우 버전을 맞춰주는게 좋다 -->
         </dependency>
+        <!-- JAVA11 - javax.xml.bind.JAXBException 에러 -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
     </dependencies>
 </project>
