@@ -31,9 +31,9 @@ public class JpaMain {
             List<Member> result = em.createQuery("select m from Member as m", Member.class)
                     .getResultList();
 
-            for(Member member : result){
-                System.out.println("member.name = " + member.getName());
-            }
+//            for(Member member : result){
+//                System.out.println("member.name = " + member.getName());
+//            }
 
             // 수정
             /*Member findMember = em.find(Member.class, 1L);
