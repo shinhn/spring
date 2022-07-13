@@ -14,8 +14,9 @@ public class Team {
 
     private String name;
 
-    @OneToMany(mappedBy = "team")
-    List<Member> members = new ArrayList<Member>();
+    @OneToMany
+    @JoinColumn(name = "TEAM_ID")
+    List<Member> members = new ArrayList<>();
 
     public Long getId() {
         return id;
