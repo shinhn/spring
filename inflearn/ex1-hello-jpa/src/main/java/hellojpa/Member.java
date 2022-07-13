@@ -1,37 +1,44 @@
 package hellojpa;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Member {
 
     @Id
+    @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "USERNAME")
     private String username;
 
-    private Integer age;
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
-
-    @Lob
-    private String description;
-
-    @Transient
-    private int temp;
-
-    public Member(){
-
+    public Long getId() {
+        return id;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+        team.getMembers().add(this);
+    }
 }
