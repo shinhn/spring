@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // 일반적인 생성 new를 못쓰게 함 -> 아래에서 만든 생성 메서드를 통해서만 생성할 수 있게 제한함
-public class Order {
+public class Order extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "order_id")

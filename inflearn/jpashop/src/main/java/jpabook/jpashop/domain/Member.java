@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Member {
+public class Member extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "member_id") // 엔티티의 식별자는 id 를 사용하고 PK 컬럼명은 member_id 를 사용

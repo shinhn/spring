@@ -1,5 +1,7 @@
 package jpabook.jpashop.domain.item;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
+import jpabook.jpashop.domain.BaseEntity;
 import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.exception.NotEnoughStockException;
 import lombok.Getter;
@@ -14,7 +16,7 @@ import java.util.List;
 @Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 부모테이블에 상속관계 전략(단일테이블) 지정
 @DiscriminatorColumn(name = "dtype") // 부모클래스에 선언, 하위 클래스를 구분하는 용도의 컬럼
-public abstract class Item {
+public abstract class Item extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name = "item_id")
