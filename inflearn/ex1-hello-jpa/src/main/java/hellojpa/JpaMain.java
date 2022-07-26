@@ -45,6 +45,9 @@ public class JpaMain {
             findMember.getFaveriteFoods().remove("치킨");
             findMember.getFaveriteFoods().add("한식");
 
+            findMember.getAddressHistory().remove(new Address("old1", "street", "10000"));
+            findMember.getAddressHistory().add(new Address("newCity1", "street", "10000"));
+
             tx.commit();
         } catch (Exception e){
             e.printStackTrace();
