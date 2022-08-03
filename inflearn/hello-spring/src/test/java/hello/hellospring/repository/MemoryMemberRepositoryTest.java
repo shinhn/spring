@@ -1,22 +1,29 @@
 package hello.hellospring.repository;
 
-import hello.hellospring.Repository.MemberRepository;
 import hello.hellospring.Repository.MemoryMemberRepository;
 import hello.hellospring.domain.Member;
 
-import org.assertj.core.api.Assertions;
+import hello.hellospring.service.MemberService;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class MemoryMemberRepositoryTest {
+class MemoryMemberRepositoryTest {
 
-    MemberRepository repository = new MemoryMemberRepository();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
+
+    @BeforeEach
+    public void beforeEach() {
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
+    }
 
     @AfterEach
     public void afterEach() {
-        repository.clearStore();
+        memberRepository.clearStore();
     }
 
     @Test
@@ -26,10 +33,10 @@ public class MemoryMemberRepositoryTest {
         member.setName("spring");
 
         //when
-        repository.save(member);
+        memberRepository.save(member);
 
         //then
-        Member result = repository.findById(member.getId()).get();
+        Member result = memberRepository.findById(member.getId()).get();
         assertThat(result).isEqualTo(member); // Assertions.assertEquals(member, result);
     }
 
@@ -38,14 +45,14 @@ public class MemoryMemberRepositoryTest {
         //given
         Member member1 = new Member();
         member1.setName("spring1");
-        repository.save(member1);
+        memberRepository.save(member1);
 
         Member member2 = new Member();
         member2.setName("spring2");
-        repository.save(member2);
+        memberRepository.save(member2);
 
          //when
-        Member result = repository.findByName("spring1").get();
+        Member result = memberRepository.findByName("spring1").get();
 
         // then
         assertThat(result).isEqualTo(member1);
