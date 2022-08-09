@@ -48,4 +48,19 @@ public class Member {
         team.getMembers().add(this);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
 }
